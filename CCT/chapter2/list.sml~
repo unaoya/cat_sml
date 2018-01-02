@@ -1,0 +1,4 @@
+exception empty_list
+
+fun max [x] = x
+    | max x::xs = if x > max(xs) then x else max(xs)
