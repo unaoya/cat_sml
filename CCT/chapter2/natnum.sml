@@ -8,3 +8,6 @@ fun add(zero,n) = n
 
 fun numprint(zero)= 0
     | numprint(succ(n))= 1 + numprint(n)
+
+fun mult(zero,n) = zero
+    | mult(succ(m),n) = add(n,mult(m,n))
