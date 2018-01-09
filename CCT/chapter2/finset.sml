@@ -1,3 +1,5 @@
+exception empty_set
+
 fun length nil = 0
     | length (x::s) = 1 + length s
 
@@ -21,4 +23,7 @@ abstype 'a Set = set of 'a list
 	     	 | singleton_split(set(x::s)) = (x,remove(x,set(s)))
 	     fun split(s) = let val (x,s') = singleton_split(s) in (singleton(x),s') end
 end
-	    
+
+fun image(f)(s) = if is_empty(s) then emptyset
+    		  else let val (x,s') = singleton_split(s) in
+		       union(singleton(f(x)),image(f)(s')) end
